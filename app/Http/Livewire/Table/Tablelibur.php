@@ -29,13 +29,11 @@ class Tablelibur extends Component
     protected $rules = [
         'tanggal' => 'required',
         'pegawai_id' => 'required',
-        'keterangan' => 'required',
         'jumlah' => 'required|numeric',
     ];
     protected $messages = [
         'tanggal.required' => 'tanggal tidak boleh kosong',
         'pegawai_id.required' => 'Pegawai tidak boleh kosong',
-        'keterangan.required' => 'Keterangan tidak boleh kosong',
         'jumlah.required' => 'Jumlah tidak boleh kosong',
         'jumlah.numeric' => 'Jumlah harus berupa angka',
     ];
@@ -72,7 +70,7 @@ class Tablelibur extends Component
                         'libur.id as id',
                         'libur.keterangan as keterangan',
                         'libur.tanggal as tanggallibur'
-                    )->orderBy($this->sortField, $this->sortAsc ? 'desc' : 'asc')
+                    )->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
                     ->paginate($this->perPage);
 
                 $pegawai = Pegawai::get();

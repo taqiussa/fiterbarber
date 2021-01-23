@@ -54,9 +54,9 @@ class Laporanpemasukan extends Component
             $this->total = $tot;
             $this->libur = $lbr;
             $this->bon = $bn;
-            if ($this->libur > 4) {
+            if ($this->libur > 5) {
                 $perlibur = 50000;
-                $jumlahlibur = intval($this->libur) - 4;
+                $jumlahlibur = intval($this->libur) - 5;
                 $this->potongan = $jumlahlibur * $perlibur;
                 $this->totalgaji = $this->gaji - $this->potongan - $this->bon;
             } else {
@@ -138,8 +138,32 @@ class Laporanpemasukan extends Component
         $printer->close();
 
         /* Copy it over to the printer */
-        copy($file, "//localhost/Gudang2");
+        // copy($file, "//localhost/Gudang2");
+        copy($file, "//localhost/EPSONTU");
         unlink($file);
         // return redirect('/laporan');
+    }
+
+    public function print2(){
+        var config = qz.configs.create("Printer Name");
+
+        var data = [
+    '\x1B' + '\x69' + '\x61' + '\x00' + '\x1B' + '\x40', // set printer to ESC/P mode and clear memory buffer
+    '\x1B' + '\x69' + '\x4C' + '\x01', // set landscape mode
+    '\x1B' + '\x55' + '\x02', '\x1B' + '\x33' + '\x0F', // set margin (02) and line feed (0F) values
+    '\x1B' + '\x6B' + '\x0B' + '\x1B' + '\x58' + '\x00' + '\x3A' + '\x00', // set font and font size 
+    'Printed by ', // "Printed by "
+    'QZ-Tray', // "QZ-Tray"
+    '\x0A' +'\x0A',// line feed 2 times
+    '\x1B' + '\x69' + '\x74' + '\x30', // set to code39 barcode
+    '\x72' + '\x31', // characters below barcode
+    '\x65' + '\x30' + '\x68' + '\x65' + '\x00' + '\x77' +'\x34' + '\x7A' + '\x32', // parentheses y/n, height, width of barcode, 2:1 ratio wide to narrow bars
+    '\x42' + '1234567890' + '\x5C', // begin barcode data, data, end barcode data
+    '\x0A' + '\x0A', // line feed 2x
+    '\x0C' // <--- Tells the printer to print 
+];
+
+    qz.print(config, data).catch(function(e) { console.error(e); });
+
     }
 }

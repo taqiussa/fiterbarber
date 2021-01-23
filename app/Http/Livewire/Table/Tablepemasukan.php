@@ -87,7 +87,7 @@ class Tablepemasukan extends Component
                         'pemasukan.id as id',
                         'pemasukan.komentar as komentarpemasukan',
                         'pemasukan.tanggal as tanggalpemasukan'
-                    )->orderBy($this->sortField, $this->sortAsc ? 'desc' : 'asc')
+                    )->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
                     ->paginate($this->perPage);
 
                 $pegawai = Pegawai::get();
