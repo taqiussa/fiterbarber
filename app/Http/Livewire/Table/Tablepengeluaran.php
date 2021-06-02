@@ -127,6 +127,7 @@ class Tablepengeluaran extends Component
     }
     public function mount()
     {
+        $this->tanggal = gmdate('Y-m-d');
         $this->button = create_button($this->action, "pengeluaran");
         // this button untuk menampilkan emit atau message toast 
     }

@@ -23,9 +23,10 @@ class Tablepemasukan extends Component
     public $pegawai_id = '';
     public $keterangan_id = '';
     public $jumlah = '';
-    public $harga = '';
-    public $total = '';
+    public $harga = 0;
+    public $total = 0;
     public $komentar = '';
+    public $vocer = 0;
     public $isOpen = 0;
     public $perPage = 10;
     public $sortField = "pemasukan.tanggal";
@@ -142,14 +143,14 @@ class Tablepemasukan extends Component
         $this->pegawai_id = '';
         $this->keterangan_id = '';
         $this->jumlah = '';
-        $this->harga = '';
-        $this->total = '';
+        $this->harga = 0;
+        $this->total = 0;
         $this->komentar = '';
         $this->idpemasukan = '';
+        $this->vocer = 0;
     }
     public function store()
     {
-
         $data = [
             'tanggal' => $this->tanggal,
             'pegawai_id' => $this->pegawai_id,
@@ -158,6 +159,7 @@ class Tablepemasukan extends Component
             'harga' => $this->harga,
             'total' => $this->total,
             'komentar' => $this->komentar,
+            'vocer' => $this->vocer,
         ];
         $this->validate();
         $this->model::updateOrCreate(['id' => $this->idpemasukan], $data);
@@ -176,10 +178,12 @@ class Tablepemasukan extends Component
         $this->harga = $cari->harga;
         $this->total = $cari->total;
         $this->komentar = $cari->komentar;
+        $this->vocer = $cari->vocer;
         $this->showModal();
     }
     public function mount()
     {
+        $this->tanggal = gmdate('Y-m-d');
         $this->button = create_button($this->action, "pemasukan");
         // this button untuk menampilkan emit atau message toast 
 

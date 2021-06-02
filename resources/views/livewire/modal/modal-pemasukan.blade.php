@@ -38,7 +38,7 @@
                                 <option value="{{ $k->id }}" >{{ $k->namaket }}</option>
                                 @endforeach
                             </select>
-                            <input wire:model="harga" type="text" class="w-1/2 px-2 py-2 border rounded shadow appearance-non" id="harga" autocomplete="off" placeholder="Harga">
+                            <input wire:model="harga" type="text" class="w-1/2 px-2 py-2 border rounded shadow appearance-non" id="harga" autocomplete="off" readonly>
                             @error('harga')
                             <h1 class="text-red-500">{{ $message }}</h1>
                             @enderror
@@ -50,6 +50,16 @@
                             @enderror
                             <input wire:model="total" type="text" class="w-1/2 px-2 py-2 border rounded shadow appearance-non" id="total" readonly placeholder="Total">
                             @error('total')
+                            <h1 class="text-red-500">{{ $message }}</h1>
+                            @enderror
+                        </div>
+                        <div class="py-2">
+                            <input type="text" class="w-1/3 px-2 py-2 ml-4 border rounded shadow appearance-non" id="jumlah" autocomplete="off" placeholder="Vocer" readonly>
+                            @error('vocer')
+                            <h1 class="text-red-500">{{ $message }}</h1>
+                            @enderror
+                            <input wire:model="vocer" type="text" class="w-1/2 px-2 py-2 border rounded shadow appearance-non" id="vocer">
+                            @error('vocer')
                             <h1 class="text-red-500">{{ $message }}</h1>
                             @enderror
                         </div>

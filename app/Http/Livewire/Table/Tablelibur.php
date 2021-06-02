@@ -147,6 +147,7 @@ class Tablelibur extends Component
     }
     public function mount()
     {
+        $this->tanggal = gmdate('Y-m-d');
         $this->button = create_button($this->action, "libur");
         // this button untuk menampilkan emit atau message toast 
 

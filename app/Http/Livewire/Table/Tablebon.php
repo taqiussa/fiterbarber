@@ -68,7 +68,7 @@ class Tablebon extends Component
                         'bon.jumlah as jumlah',
                         'bon.id as id',
                         'bon.tanggal as tanggalbon'
-                    )->orderBy($this->sortField, $this->sortAsc ? 'desc' : 'asc')
+                    )->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
                     ->paginate($this->perPage);
 
                 $pegawai = Pegawai::get();
@@ -142,6 +142,7 @@ class Tablebon extends Component
     }
     public function mount()
     {
+        $this->tanggal = gmdate('Y-m-d');
         $this->button = create_button($this->action, "bon");
         // this button untuk menampilkan emit atau message toast 
 
