@@ -26,7 +26,7 @@ class Tablepemasukan extends Component
     public $harga = '';
     public $total = '';
     public $komentar = '';
-    public $vocer = '';
+    public $vocer = 0;
     public $isOpen = 0;
     public $perPage = 10;
     public $sortField = "pemasukan.tanggal";
@@ -42,7 +42,6 @@ class Tablepemasukan extends Component
         'jumlah' => 'required|numeric',
         'harga' => 'required',
         'total' => 'required',
-        'vocer' => 'required',
     ];
     protected $messages = [
         'tanggal.required' => 'tanggal tidak boleh kosong',
@@ -52,7 +51,6 @@ class Tablepemasukan extends Component
         'jumlah.numeric' => 'Jumlah harus berupa angak',
         'harga.required' => 'Harga tidak boleh kosong',
         'total.required' => 'Total tidak boleh kosong',
-        'vocer.required' => 'vocer tidak boleh kosong',
     ];
     public function showModal()
     {
@@ -149,7 +147,7 @@ class Tablepemasukan extends Component
         $this->harga = '';
         $this->total = '';
         $this->komentar = '';
-        $this->vocer = '';
+        $this->vocer = 0;
         $this->idpemasukan = '';
     }
     public function store()
