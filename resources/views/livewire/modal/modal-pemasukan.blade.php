@@ -54,10 +54,7 @@
                             @enderror
                         </div>
                         <div class="py-2">
-                            <input type="text" class="w-1/3 px-2 py-2 ml-4 border rounded shadow appearance-non" id="jumlah" autocomplete="off" placeholder="Vocer" readonly>
-                            @error('vocer')
-                            <h1 class="text-red-500">{{ $message }}</h1>
-                            @enderror
+                            <input type="text" class="w-1/3 px-2 py-2 ml-4 border rounded shadow appearance-non" autocomplete="off" placeholder="Vocer" readonly>
                             <input wire:model="vocer" type="text" class="w-1/2 px-2 py-2 border rounded shadow appearance-non" id="vocer">
                             @error('vocer')
                             <h1 class="text-red-500">{{ $message }}</h1>
