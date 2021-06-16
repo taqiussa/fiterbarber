@@ -10,7 +10,8 @@
         @isset($meta)
             {{ $meta }}
         @endisset
-
+        <!-- Logo -->
+        <link rel="icon" href="{{ asset('images/logo fiter barber.png')}}" type="image/png" sizes="16x16">
         <!-- Styles -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@400;600;700&family=Open+Sans&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('vendor/bootstrap.min.css') }}">
