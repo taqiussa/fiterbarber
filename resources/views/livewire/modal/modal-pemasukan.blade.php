@@ -38,7 +38,7 @@
                                 <option value="{{ $k->id }}" >{{ $k->namaket }}</option>
                                 @endforeach
                             </select>
-                            <input wire:model="harga" type="text" class="w-1/2 px-2 py-2 border rounded shadow appearance-non" id="harga" autocomplete="off" readonly>
+                            <input wire:model="harga" type="text" class="w-1/2 px-2 py-2 border rounded shadow appearance-non" id="harga" autocomplete="off">
                             @error('harga')
                             <h1 class="text-red-500">{{ $message }}</h1>
                             @enderror
