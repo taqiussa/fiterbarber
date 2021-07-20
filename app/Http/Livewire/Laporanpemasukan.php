@@ -13,7 +13,6 @@ use Mike42\Escpos\Printer;
 use Mike42\Escpos\PrintConnectors\FilePrintConnector;
 
 
-
 class Laporanpemasukan extends Component
 {
     public $bulan;
@@ -66,9 +65,9 @@ class Laporanpemasukan extends Component
             } else {
                 $this->totalbonus = 0;
             }
-            if ($this->libur > 4) {
+            if ($this->libur > 5) {
                 $perlibur = 50000;
-                $jumlahlibur = intval($this->libur) - 4;
+                $jumlahlibur = intval($this->libur) - 5;
                 $this->potongan = $jumlahlibur * $perlibur;
                 $this->totalgaji = $this->gaji + $this->totalbonus - $this->potongan - $this->bon;
             } else {
@@ -78,6 +77,7 @@ class Laporanpemasukan extends Component
         }
         return view('livewire.laporan.laporanpemasukan', $data);
     }
+
     public function print()
     {
         //request data
@@ -152,32 +152,94 @@ class Laporanpemasukan extends Component
         $printer->close();
 
         /* Copy it over to the printer */
-        copy($file, "//localhost/Gudang2");
+        copy($file, "//localhost/Gudang");
+        // copy($file, "//localhost/EPSONTU");
+        unlink($file);
+        // return redirect('/laporan');
+    }
+    public function printlabel()
+    {
+
+        /* Open file */
+        $tmpdir = sys_get_temp_dir();
+        $file =  tempnam($tmpdir, 'cetak');
+
+        /* Do some printing */
+        $connector = new FilePrintConnector($file);
+        $printer = new Printer($connector);
+
+        /* Print Logo */
+
+        $img = EscposImage::load('images/logoputih.png');
+        $printer->setJustification(Printer::JUSTIFY_CENTER);
+        $printer->bitImageColumnFormat($img);
+        // $printer->feed();
+        /* Name of shop */
+        $printer->feed();
+        /* Title of receipt */
+        $printer->setEmphasis(true);
+        // $printer->text("FITER BARBER INVOICE\n");
+        $printer->setTextSize(2,2);
+        $printer->text("Barber Puguh\n");
+        $printer->setEmphasis(false);
+        $printer->setTextSize(1,1);
+        $date = gmdate('M Y');
+        $printer->feed();
+        // $printer->text($date . "\n");
+
+        /* Cut the receipt and open the cash drawer */
+        $printer->cut();
+        $printer->pulse();
+
+        $printer->close();
+
+        /* Copy it over to the printer */
+        copy($file, "//localhost/Gudang");
+        // copy($file, "//localhost/EPSONTU");
+        unlink($file);
+        // return redirect('/laporan');
+    }
+    public function print2()
+    {
+
+        /* Open file */
+        $tmpdir = sys_get_temp_dir();
+        $file =  tempnam($tmpdir, 'cetak');
+
+        /* Do some printing */
+        $connector = new FilePrintConnector($file);
+        $printer = new Printer($connector);
+
+        /* Print Logo */
+
+        $img = EscposImage::load('images/logoputih.png');
+        $printer->setJustification(Printer::JUSTIFY_CENTER);
+        $printer->bitImageColumnFormat($img);
+        // $printer->feed();
+        /* Name of shop */
+        $printer->feed();
+        /* Title of receipt */
+        $printer->setEmphasis(true);
+        $printer->text("FITER BARBER INVOICE\n");
+        $printer->setTextSize(2,2);
+        $printer->text($this->nama . "\n");
+        $printer->setEmphasis(false);
+        $printer->setTextSize(1,1);
+        $date = gmdate('M Y');
+        $printer->feed();
+        $printer->text($date . "\n");
+
+        /* Cut the receipt and open the cash drawer */
+        $printer->cut();
+        $printer->pulse();
+
+        $printer->close();
+
+        /* Copy it over to the printer */
+        copy($file, "//localhost/Gudang");
         // copy($file, "//localhost/EPSONTU");
         unlink($file);
         // return redirect('/laporan');
     }
 
-    //     public function print2(){
-    //         var config = qz.configs.create("Printer Name");
-
-    //         var data = [
-    //     '\x1B' + '\x69' + '\x61' + '\x00' + '\x1B' + '\x40', // set printer to ESC/P mode and clear memory buffer
-    //     '\x1B' + '\x69' + '\x4C' + '\x01', // set landscape mode
-    //     '\x1B' + '\x55' + '\x02', '\x1B' + '\x33' + '\x0F', // set margin (02) and line feed (0F) values
-    //     '\x1B' + '\x6B' + '\x0B' + '\x1B' + '\x58' + '\x00' + '\x3A' + '\x00', // set font and font size 
-    //     'Printed by ', // "Printed by "
-    //     'QZ-Tray', // "QZ-Tray"
-    //     '\x0A' +'\x0A',// line feed 2 times
-    //     '\x1B' + '\x69' + '\x74' + '\x30', // set to code39 barcode
-    //     '\x72' + '\x31', // characters below barcode
-    //     '\x65' + '\x30' + '\x68' + '\x65' + '\x00' + '\x77' +'\x34' + '\x7A' + '\x32', // parentheses y/n, height, width of barcode, 2:1 ratio wide to narrow bars
-    //     '\x42' + '1234567890' + '\x5C', // begin barcode data, data, end barcode data
-    //     '\x0A' + '\x0A', // line feed 2x
-    //     '\x0C' // <--- Tells the printer to print 
-    // ];
-
-    //     qz.print(config, data).catch(function(e) { console.error(e); });
-
-    //     }
 }

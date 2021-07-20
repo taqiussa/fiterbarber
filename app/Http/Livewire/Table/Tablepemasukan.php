@@ -94,10 +94,10 @@ class Tablepemasukan extends Component
 
                 $pegawai = Pegawai::get();
                 $ket = Keterangan::where('jenis', 'pemasukan')->get();
-                // if (!empty($this->keterangan_id)) {
-                //     $cariharga = Keterangan::find($this->keterangan_id);
-                //     $this->harga = $cariharga->harga;
-                // }
+                if (!empty($this->keterangan_id)) {
+                    $cariharga = Keterangan::find($this->keterangan_id);
+                    $this->harga = $cariharga->harga;
+                }
                 $this->total = intval($this->harga) * intval($this->jumlah);
                 return [
                     "view" => 'livewire.table.pemasukan', //resource view

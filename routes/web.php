@@ -36,6 +36,7 @@ Route::group(["middleware" => ['auth:sanctum', 'verified']], function () {
     Route::get('/libur', [LiburController::class, 'index'])->name('libur');
     Route::get('/bon', [BonController::class, 'index'])->name('bon');
     Route::get('/laporanpemasukan', [LaporanpemasukanController::class, 'index'])->name('laporanpemasukan');
+    Route::get('/laporanharian', [LaporanpemasukanController::class, 'harian'])->name('laporanharian');
     Route::get('/laporankeuangan', [LaporankeuanganController::class, 'index'])->name('laporankeuangan');
     Route::view('/user/new', 'pages.user.user-new')->name('user.new');
     Route::view('/user/edit/{userId}', 'pages.user.user-edit')->name('user.edit');
