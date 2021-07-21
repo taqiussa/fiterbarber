@@ -10,7 +10,7 @@ class Pengeluaran extends Model
 {
     use HasFactory;
     protected $table = 'pengeluaran';
-    protected $fillable = ['tanggal', 'keterangan', 'total'];
+    protected $fillable = ['tanggal', 'keterangan', 'total','tanggalsimpan'];
     public function getTglAttribute()
     {
         return Carbon::parse($this->attributes['tgl'])->translatedFormat('l, d M y');

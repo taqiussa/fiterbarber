@@ -26,16 +26,16 @@ class Laporanharian extends Component
     public function render()
     {
         if(!empty($this->pilihlaporan)){
-            $this->pemasukans = Pemasukan::whereBetween('tanggal',[$this->tanggalmulai,$this->tanggalakhir])
+            $this->pemasukans = Pemasukan::whereBetween('tanggalsimpan',[$this->tanggalmulai,$this->tanggalakhir])
             ->where('pegawai_id',$this->pilihlaporan)
             ->select(
                 'tanggal as tanggalpemasukan',
                 'jumlah',
                 'total',
             )
-            ->orderBy('tanggal','desc')
+            ->orderBy('tanggal','asc')
             ->get();
-            $this->jumlahtotal =  Pemasukan::whereBetween('tanggal',[$this->tanggalmulai,$this->tanggalakhir])
+            $this->jumlahtotal =  Pemasukan::whereBetween('tanggalsimpan',[$this->tanggalmulai,$this->tanggalakhir])
             ->where('pegawai_id',$this->pilihlaporan)->sum('total');
             $this->isPemasukan = true;
         }

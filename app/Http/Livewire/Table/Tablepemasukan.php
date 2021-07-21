@@ -26,6 +26,7 @@ class Tablepemasukan extends Component
     public $harga = '';
     public $total = '';
     public $komentar = '';
+    public $tanggalsimpan;
     public $vocer = 0;
     public $isOpen = 0;
     public $perPage = 10;
@@ -42,9 +43,11 @@ class Tablepemasukan extends Component
         'jumlah' => 'required|numeric',
         'harga' => 'required',
         'total' => 'required',
+        'tanggalsimpan' => 'required',
     ];
     protected $messages = [
         'tanggal.required' => 'tanggal tidak boleh kosong',
+        'tanggalsimpan.required' => 'tanggal Simpan tidak boleh kosong',
         'pegawai_id.required' => 'Pegawai tidak boleh kosong',
         'keterangan_id.required' => 'Keterangan tidak boleh kosong',
         'jumlah.required' => 'Jumlah tidak boleh kosong',
@@ -161,6 +164,7 @@ class Tablepemasukan extends Component
             'total' => $this->total,
             'komentar' => $this->komentar,
             'vocer' => $this->vocer,
+            'tanggalsimpan' => $this->tanggalsimpan,
         ];
         $this->validate();
         $this->model::updateOrCreate(['id' => $this->idpemasukan], $data);
@@ -185,6 +189,7 @@ class Tablepemasukan extends Component
     public function mount()
     {
         $this->tanggal = gmdate('Y-m-d');
+        $this->tanggalsimpan = gmdate('Y-m-d');
         $this->button = create_button($this->action, "pemasukan");
         // this button untuk menampilkan emit atau message toast 
 

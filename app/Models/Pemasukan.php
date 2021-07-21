@@ -11,7 +11,7 @@ class Pemasukan extends Model
 {
     use HasFactory;
     protected $table = 'pemasukan';
-    protected $fillable = ['tanggal', 'pegawai_id', 'keterangan_id', 'jumlah', 'harga', 'total', 'komentar', 'vocer'];
+    protected $fillable = ['tanggal', 'pegawai_id', 'keterangan_id', 'jumlah', 'harga', 'total', 'komentar', 'vocer','tanggalsimpan'];
 
     public function getTanggalPemasukanAttribute()
     {
