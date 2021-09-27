@@ -97,9 +97,19 @@ class Tablepemasukan extends Component
 
                 $pegawai = Pegawai::get();
                 $ket = Keterangan::where('jenis', 'pemasukan')->get();
-                if (!empty($this->keterangan_id)) {
-                    $cariharga = Keterangan::find($this->keterangan_id);
-                    $this->harga = $cariharga->harga;
+                // if (!empty($this->keterangan_id)) {
+                //     $cariharga = Keterangan::find($this->keterangan_id);
+                //     $this->harga = $cariharga->harga;
+                // }
+                if(!empty($this->keterangan_id)){
+                    $caripegawai = Pegawai::find($this->pegawai_id);
+                    if($caripegawai->nama == "Fendi"){
+                        $this->harga = 6000;
+                    }elseif($caripegawai->nama == "Budi"){
+                        $this->harga = 12000;
+                    }else{
+                        $this->harga = 10000;
+                    }
                 }
                 $this->total = intval($this->harga) * intval($this->jumlah);
                 return [

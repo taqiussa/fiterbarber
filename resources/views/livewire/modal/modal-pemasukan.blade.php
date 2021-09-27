@@ -20,7 +20,7 @@
                     <div>
                         <div class="px-1 py-2">
                             <input wire:model="idpemasukan" type="hidden" class="w-full px-2 py-2 border rounded shadow appearance-non" id="idpemasukan" >
-                            <input wire:model="tanggal" type="date" class="w-1/3 px-2 py-2 ml-4 border rounded shadow appearance-non" id="tanggal" autocomplete="off">
+                            <input wire:model.defer="tanggal" type="date" class="w-1/3 px-2 py-2 ml-4 border rounded shadow appearance-non" id="tanggal" autocomplete="off">
                             @error('tanggal')
                             <h1 class="text-red-500">{{ $message }}</h1>
                             @enderror
@@ -38,7 +38,7 @@
                                 <option value="{{ $k->id }}" >{{ $k->namaket }}</option>
                                 @endforeach
                             </select>
-                            <input wire:model="harga" type="text" class="w-1/2 px-2 py-2 border rounded shadow appearance-non" id="harga" autocomplete="off">
+                            <input wire:model.defer="harga" type="text" class="w-1/2 px-2 py-2 border rounded shadow appearance-non" id="harga" autocomplete="off">
                             @error('harga')
                             <h1 class="text-red-500">{{ $message }}</h1>
                             @enderror
@@ -48,20 +48,20 @@
                             @error('jumlah')
                             <h1 class="text-red-500">{{ $message }}</h1>
                             @enderror
-                            <input wire:model="total" type="text" class="w-1/2 px-2 py-2 border rounded shadow appearance-non" id="total" readonly placeholder="Total">
+                            <input wire:model.defer="total" type="text" class="w-1/2 px-2 py-2 border rounded shadow appearance-non" id="total" readonly placeholder="Total">
                             @error('total')
                             <h1 class="text-red-500">{{ $message }}</h1>
                             @enderror
                         </div>
                         <div class="py-2">
                             <input type="text" class="w-1/3 px-2 py-2 ml-4 border rounded shadow appearance-non" autocomplete="off" placeholder="Vocer" readonly>
-                            <input wire:model="vocer" type="text" class="w-1/2 px-2 py-2 border rounded shadow appearance-non" id="vocer">
+                            <input wire:model.defer="vocer" type="text" class="w-1/2 px-2 py-2 border rounded shadow appearance-non" id="vocer">
                             @error('vocer')
                             <h1 class="text-red-500">{{ $message }}</h1>
                             @enderror
                         </div>
                         <div class="py-2">
-                            <input wire:model="komentar" type="text" class="w-10/12 px-2 py-2 ml-4 border rounded shadow appearance-non" id="komentar" autocomplete="off" placeholder="Komentar">
+                            <input wire:model.defer="komentar" type="text" class="w-10/12 px-2 py-2 ml-4 border rounded shadow appearance-non" id="komentar" autocomplete="off" placeholder="Komentar">
                             @error('komentar')
                             <h1 class="text-red-500">{{ $message }}</h1>
                             @enderror

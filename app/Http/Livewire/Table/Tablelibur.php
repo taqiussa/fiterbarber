@@ -16,7 +16,7 @@ class Tablelibur extends Component
     public $idlibur = '';
     public $tanggal = '';
     public $pegawai_id = '';
-    public $jumlah = 1;
+    public $jumlah;
     public $keterangan = '';
     public $isOpen = 0;
     public $perPage = 10;

@@ -61,7 +61,7 @@ class Laporanpemasukan extends Component
             $this->jumlah2 = $jml;
             if ($this->jumlah > 349) {
                 $bonus = $this->jumlah - 350;
-                $this->totalbonus = ($bonus * 2000);
+                $this->totalbonus = 50000 + ($bonus * 2000);
             } else {
                 $this->totalbonus = 0;
             }

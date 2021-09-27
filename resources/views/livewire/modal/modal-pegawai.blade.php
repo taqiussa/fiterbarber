@@ -16,14 +16,14 @@
                         <div>
                             <label for="nama">Nama</label>
                             <input wire:model="idpegawai" type="hidden" class="w-full px-2 py-2 border rounded shadow appearance-non" id="nama" >
-                            <input wire:model="nama" type="text" class="w-full px-2 py-2 border rounded shadow appearance-non" id="nama" autocomplete="off">
+                            <input wire:model.defer="nama" type="text" class="w-full px-2 py-2 border rounded shadow appearance-non" id="nama" autocomplete="off">
                             @error('nama')
                             <h1 class="text-red-500">{{ $message }}</h1>
                             @enderror
                         </div>
                         <div>
                             <label for="tempat">Tempat</label>
-                            <input wire:model="tempat" type="text" class="w-full px-2 py-2 border rounded shadow appearance-non" id="tempat" autocomplete="off">
+                            <input wire:model.defer="tempat" type="text" class="w-full px-2 py-2 border rounded shadow appearance-non" id="tempat" autocomplete="off">
                             @error('tempat')
                             <h1 class="text-red-500">{{ $message }}</h1>
                             @enderror
