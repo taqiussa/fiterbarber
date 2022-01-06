@@ -105,6 +105,7 @@ class Laporanpemasukan extends Component
         $printer->selectPrintMode();
         $printer->text("Ngampel Kulon - Ngampel\n");
         $printer->text("Karangayu - Cepiring\n");
+        $printer->text("Puguh - Pegandon\n");
         // $printer->text($nama . "\n");
         $printer->feed();
 

@@ -7,7 +7,7 @@ $links =
         "list" =>
         [
             [
-                "text" => "Dashboar",
+                "text" => "Dashboard",
                 "icon" => "fab fa-gripfire",
                 "href" => "dashboard",
                 "is_dropdown" => false,
@@ -58,6 +58,15 @@ $links =
                             ["href" => "laporanpemasukan", "text" => "Pemasukan"],
                             ["href" => "laporankeuangan", "text" => "Keuangan"],
                             ["href" => "laporanharian", "text" => "Harian"],
+                        ]
+                    ],
+                    [
+                        "section_text" => "Print Out",
+                        "section_icon" => "far fa-file-powerpoint",
+                        "section_list" => 
+                        [
+                            ["href" => "tabelprint", "text" => "Tabel Print Out"],
+                            ["href" => "toprintout", "text" => "Print"],
                         ]
                     ]
                 ],

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLibursTable extends Migration
+class CreateHargaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateLibursTable extends Migration
      */
     public function up()
     {
-        Schema::create('libur', function (Blueprint $table) {
+        Schema::create('harga', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal');
-            $table->integer('pegawai_id');
-            $table->integer('jumlah');
-            $table->text('keterangan');
+            $table->foreignId('pegawai_id');
+            $table->foreignId('keterangan_id');
+            $table->integer('harga');
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -29,6 +29,6 @@ class CreateLibursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('libur');
+        Schema::dropIfExists('harga');
     }
 }

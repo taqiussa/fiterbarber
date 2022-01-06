@@ -23,9 +23,7 @@
         <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/all.css') }}">
 
         <livewire:styles />
-        <livewire:scripts />
-        <script src="{{ mix('js/app.js') }}" defer></script>
-        <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false" data-turbo-eval="false"></script>
+        {{-- <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false" data-turbo-eval="false"></script> --}}
 
         <!-- Scripts -->
         <script defer src="{{ asset('vendor/alpine.js') }}"></script>
@@ -72,8 +70,8 @@
 
         <script src="{{ asset('stisla/js/stisla.js') }}"></script>
         <script src="{{ asset('stisla/js/scripts.js') }}"></script>
-
-        
+        <livewire:scripts />
+        <script src="{{ mix('js/app.js') }}" defer></script>
         @isset($script)
             {{ $script }}
         @endisset

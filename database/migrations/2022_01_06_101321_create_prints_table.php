@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLibursTable extends Migration
+class CreatePrintsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateLibursTable extends Migration
      */
     public function up()
     {
-        Schema::create('libur', function (Blueprint $table) {
+        Schema::create('prints', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal');
-            $table->integer('pegawai_id');
+            $table->date('tanggal_mulai');
+            $table->date('tanggal_akhir');
             $table->integer('jumlah');
-            $table->text('keterangan');
+            $table->integer('total');
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -29,6 +30,6 @@ class CreateLibursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('libur');
+        Schema::dropIfExists('prints');
     }
 }

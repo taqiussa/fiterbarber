@@ -13,4 +13,19 @@ class KeteranganController extends Controller
             'keterangan' => Keterangan::class
         ]);
     }
+    public function indexapi()
+    {
+        $keterangans = Keterangan::all();
+        return response()->json([
+            'status' => 200,
+            'keterangans' => $keterangans
+        ]);
+    }
+    public function showapi($id){
+        $keterangans = Keterangan::find($id);
+        return response()->json([
+            'keterangans' => $keterangans,
+            'status' => 200
+        ]);
+    }
 }
